@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "cupcake";
+  default: true;
+  --color-primary: #00a1b7;
+  --color-secondary: teal;
+}

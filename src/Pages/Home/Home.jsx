@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Home = () => {
     return (
         <div>
-            <h1>This is Home Page</h1>
+            <h2>Welcome to the Home Page</h2>
         </div>
     );
 };
