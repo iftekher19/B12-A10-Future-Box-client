@@ -1,6 +1,9 @@
 export default function OurMission() {
   return (
-    <section className="py-16 bg-white" data-aos="fade-up">
+    <section
+      className="py-16 bg-gradient-to-r from-cyan-50 via-teal-50 to-blue-100"
+      data-aos="fade-up"
+    >
       <div className="max-w-5xl mx-auto text-center px-6">
         <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
         <p className="text-gray-600 mb-8 leading-relaxed">

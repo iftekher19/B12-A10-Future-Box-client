@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import SpotlightCard from "../../Components/SpotlightCard";
 
 
 export default function FeaturedFoods({ food }) {
@@ -29,8 +30,9 @@ export default function FeaturedFoods({ food }) {
   };
 
   return (
-    <div
-      className="card bg-base-100 shadow hover:shadow-lg transition duration-300"
+    <SpotlightCard
+      spotlightColor="rgba(0, 255, 200, 0.3)"
+      className="bg-base-100 shadow hover:shadow-lg transition duration-300"
       data-aos="zoom-in"
     >
       <figure className="h-56">
@@ -69,6 +71,6 @@ export default function FeaturedFoods({ food }) {
           </button>
         </div>
       </div>
-    </div>
+    </SpotlightCard>
   );
 }
