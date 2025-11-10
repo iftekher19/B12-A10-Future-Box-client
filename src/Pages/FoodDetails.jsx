@@ -4,6 +4,8 @@ import axios from "../axios.config";
 
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import FoodRequestsTable from "./FoodRequestsTable";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 export default function FoodDetails() {
   const { id } = useParams(); // food id from route
@@ -40,6 +42,10 @@ export default function FoodDetails() {
         reason: form.reason,
         contactNo: form.contactNo,
         status: "pending",
+        food_name: food.food_name,
+        food_image: food.food_image,
+        donatorName: food?.donator?.name,
+        donatorEmail: food?.donator?.email,
       };
 
       const { data } = await axios.post("/requests", payload);
@@ -58,7 +64,7 @@ export default function FoodDetails() {
   if (loading)
     return (
       <div className="flex justify-center my-20">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
+        <LoadingSpinner />;
       </div>
     );
 
@@ -191,6 +197,7 @@ export default function FoodDetails() {
           </div>
         </div>
       )}
+      <FoodRequestsTable food={food} />
     </div>
   );
 }

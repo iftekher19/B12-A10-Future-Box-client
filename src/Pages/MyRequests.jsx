@@ -3,6 +3,7 @@ import axios from "../axios.config";
 
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 export default function MyRequests() {
   const { user } = useContext(AuthContext);
@@ -35,11 +36,11 @@ export default function MyRequests() {
 
       {loading ? (
         <div className="flex justify-center my-20">
-          <span className="loading loading-spinner loading-lg text-primary"></span>
+          <LoadingSpinner />
         </div>
       ) : requests.length === 0 ? (
         <p className="text-center text-gray-500">
-          You haven’t requested any food yet.
+          You haven't requested any food yet.
         </p>
       ) : (
         <div className="overflow-x-auto">

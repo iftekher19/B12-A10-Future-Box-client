@@ -5,6 +5,7 @@ import axios from "../axios.config";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import SpotlightCard from "../Components/SpotlightCard"; 
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 export default function AvailableFoods() {
   const { user } = useContext(AuthContext);
@@ -56,7 +57,7 @@ export default function AvailableFoods() {
 
       {loading && (
         <div className="flex justify-center my-20">
-          <span className="loading loading-spinner loading-lg text-primary"></span>
+          <LoadingSpinner />
         </div>
       )}
 

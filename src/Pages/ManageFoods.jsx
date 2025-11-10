@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "../axios.config";
 import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 export default function ManageFoods() {
   const { user } = useContext(AuthContext);
@@ -89,7 +90,7 @@ export default function ManageFoods() {
   if (loading)
     return (
       <div className="flex justify-center my-20">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
+        <LoadingSpinner />
       </div>
     );
 

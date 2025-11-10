@@ -10,6 +10,7 @@ import FeaturedFoods from "./FeaturedFoods";
 import HowItWorks from "./HowItWorks";
 import OurMission from "./OurMission";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
 export default function Home() {
   const [foods, setFoods] = useState([]);
@@ -47,7 +48,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mb-10">Featured Foods</h2>
         {loading ? (
           <div className="flex justify-center my-10">
-            <span className="loading loading-spinner loading-lg text-primary"></span>
+            <LoadingSpinner />
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
