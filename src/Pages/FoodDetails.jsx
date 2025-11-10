@@ -1,20 +1,19 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "../axios.config";
-
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import FoodRequestsTable from "./FoodRequestsTable";
 import LoadingSpinner from "../Components/LoadingSpinner";
 
 export default function FoodDetails() {
-  const { id } = useParams(); // food id from route
-  const { user } = useContext(AuthContext); // logged-in user info
+  const { id } = useParams(); 
+  const { user } = useContext(AuthContext); 
   const [food, setFood] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [requestModal, setRequestModal] = useState(false); // modal state
   const [form, setForm] = useState({ location: "", reason: "", contactNo: "" });
 
+  // Fetch food info
   useEffect(() => {
     const fetchFood = async () => {
       try {
@@ -29,7 +28,7 @@ export default function FoodDetails() {
     fetchFood();
   }, [id]);
 
-  // Handle food request submission
+  // Handle submit request
   const handleRequest = async (e) => {
     e.preventDefault();
     try {
@@ -51,7 +50,7 @@ export default function FoodDetails() {
       const { data } = await axios.post("/requests", payload);
       if (data.success) {
         toast.success("Request submitted successfully!");
-        setRequestModal(false);
+        document.getElementById("request_modal").close(); // close modal
         setForm({ location: "", reason: "", contactNo: "" });
       } else {
         toast.error("Failed to submit food request");
@@ -64,7 +63,7 @@ export default function FoodDetails() {
   if (loading)
     return (
       <div className="flex justify-center my-20">
-        <LoadingSpinner />;
+        <LoadingSpinner />
       </div>
     );
 
@@ -79,7 +78,7 @@ export default function FoodDetails() {
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       <toast position="top-center" />
 
-      {/* ===== Food Image and Details ===== */}
+       {/* Food Image and Details  */}
       <div className="shadow-lg rounded-lg overflow-hidden bg-base-100">
         <img
           src={food.food_image}
@@ -88,6 +87,7 @@ export default function FoodDetails() {
         />
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-4">{food.food_name}</h1>
+
           <div className="grid sm:grid-cols-2 gap-4 text-gray-700">
             <p>
               <strong>Quantity:</strong> {food.food_quantity}
@@ -112,7 +112,7 @@ export default function FoodDetails() {
         </div>
       </div>
 
-      {/* ===== Donator Info ===== */}
+      {/*  Donator Info  */}
       {food.donator && (
         <div className="bg-base-200 rounded-lg p-5 flex items-center gap-4 shadow">
           <img
@@ -127,76 +127,68 @@ export default function FoodDetails() {
         </div>
       )}
 
-      {/* ===== Request Food Button ===== */}
+      {/*Request Food Button*/}
       <div className="text-center">
         <button
-          onClick={() => setRequestModal(true)}
+          onClick={() => document.getElementById("request_modal").showModal()}
           className="btn btn-primary text-white"
         >
           Request Food
         </button>
       </div>
 
-      {/* ===== Modal for Request Form ===== */}
-      {requestModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-96 relative animate-fadeIn">
-            <button
-              onClick={() => setRequestModal(false)}
-              className="absolute top-2 right-3 text-gray-500 hover:text-gray-700"
-            >
-              ✖
-            </button>
+      {/*DaisyUI Modal*/}
+      <dialog id="request_modal" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box bg-base-100 text-base-content shadow-xl relative">
+          <form method="dialog" className="absolute right-3 top-3">
+            <button className="btn btn-sm btn-circle">✕</button>
+          </form>
 
-            <h3 className="text-xl font-semibold mb-4 text-center">
-              Request This Food
-            </h3>
-            <form onSubmit={handleRequest} className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Pickup Location"
-                value={form.location}
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
-                className="input input-bordered w-full"
-                required
-              />
+          <h3 className="text-xl font-semibold mb-4 text-center">
+            Request This Food
+          </h3>
 
-              <textarea
-                placeholder="Why do you need this food?"
-                value={form.reason}
-                onChange={(e) => setForm({ ...form, reason: e.target.value })}
-                className="textarea textarea-bordered w-full"
-                rows={3}
-                required
-              />
+          <form onSubmit={handleRequest} className="space-y-4">
+            <input
+              type="text"
+              placeholder="Your Pickup Location"
+              value={form.location}
+              onChange={(e) => setForm({ ...form, location: e.target.value })}
+              className="input input-bordered w-full"
+              required
+            />
 
-              <input
-                type="text"
-                placeholder="Contact Number"
-                value={form.contactNo}
-                onChange={(e) =>
-                  setForm({ ...form, contactNo: e.target.value })
-                }
-                className="input input-bordered w-full"
-                required
-              />
+            <textarea
+              placeholder="Why do you need this food?"
+              value={form.reason}
+              onChange={(e) => setForm({ ...form, reason: e.target.value })}
+              className="textarea textarea-bordered w-full"
+              rows={3}
+              required
+            />
 
-              <div className="flex justify-between mt-4">
-                <button type="submit" className="btn btn-success text-white">
-                  Submit Request
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setRequestModal(false)}
-                  className="btn btn-ghost"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
+            <input
+              type="text"
+              placeholder="Contact Number"
+              value={form.contactNo}
+              onChange={(e) => setForm({ ...form, contactNo: e.target.value })}
+              className="input input-bordered w-full"
+              required
+            />
+
+            <div className="modal-action">
+              <button type="submit" className="btn btn-success text-white">
+                Submit Request
+              </button>
+              <form method="dialog">
+                <button className="btn">Cancel</button>
+              </form>
+            </div>
+          </form>
         </div>
-      )}
+      </dialog>
+
+      {/*Food Requests Table*/}
       <FoodRequestsTable food={food} />
     </div>
   );
