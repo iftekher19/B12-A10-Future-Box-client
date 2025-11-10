@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import axios from "../axios.config"; // your axios instance file
+import axios from "../axios.config"; 
 
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
-
+import SpotlightCard from "../Components/SpotlightCard"; 
 
 export default function AvailableFoods() {
   const { user } = useContext(AuthContext);
@@ -75,9 +75,11 @@ export default function AvailableFoods() {
       {!loading && !error && foods.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {foods.map((food) => (
-            <div
+            <SpotlightCard
               key={food._id}
+              spotlightColor="rgba(0, 255, 200, 0.3)"
               className="card bg-base-100 shadow-lg hover:shadow-xl transition duration-300"
+              data-aos="zoom-in"
             >
               <figure className="h-56">
                 <img
@@ -123,7 +125,7 @@ export default function AvailableFoods() {
                   </button>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       )}
