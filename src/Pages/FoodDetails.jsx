@@ -78,7 +78,7 @@ export default function FoodDetails() {
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       <toast position="top-center" />
 
-       {/* Food Image and Details  */}
+      {/* Food Image and Details  */}
       <div className="shadow-lg rounded-lg overflow-hidden bg-base-100">
         <img
           src={food.food_image}
@@ -139,7 +139,7 @@ export default function FoodDetails() {
 
       {/*DaisyUI Modal*/}
       <dialog id="request_modal" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-base-100 text-base-content shadow-xl relative">
+        <div className="modal-box bg-base-100 text-base-content shadow-xl relative  w-[95%] max-w-md md:max-w-lg">
           <form method="dialog" className="absolute right-3 top-3">
             <button className="btn btn-sm btn-circle">✕</button>
           </form>
