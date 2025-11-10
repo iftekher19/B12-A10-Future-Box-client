@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import Button from "../Design/Button";
+import logo from "../assets/TT.png"
+
 
 
 export default function Navbar() {
@@ -111,12 +113,12 @@ export default function Navbar() {
         {/* Logo and name */}
         <Link to="/" className="flex items-center space-x-1">
           <img
-            src="/logo.png"
+            src={logo}
             alt="PlateShare Logo"
             className="w-8 h-8 object-contain"
           />
           <span className="font-bold text-xl text-[#00a1b7]">
-            Plate<span className="text-black">Share</span>
+            Table<span className="text-black">Together</span>
           </span>
         </Link>
       </div>

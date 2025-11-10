@@ -1,5 +1,5 @@
 
-import { Link, useLocation, useNavigate } from "react-router";
+
 
 import { toast } from "react-toastify";
 import eyeop from "../assets/eyeOpen.svg";
@@ -8,6 +8,7 @@ import gmail from "../assets/gmail.svg";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useContext, useState } from "react";
 import Button from "../Design/Button";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const location = useLocation();
+  console.log("login received state:", location.state);
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {

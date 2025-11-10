@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import axios from "../axios.config";
 
 import { AuthContext } from "../Provider/AuthProvider";

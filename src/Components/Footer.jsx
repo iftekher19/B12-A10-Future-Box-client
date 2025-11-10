@@ -3,19 +3,19 @@ import gmail from "../assets/gmail.svg";
 import facebook from "../assets/facebook.svg";
 import linkdin from "../assets/linkdin.png";
 import instagram from "../assets/insts.svg";
+import logo from "../assets/TT.png";
 
 const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content p-10 mt-20">
       <div className="footer max-w-6xl mx-auto flex flex-wrap justify-between">
         <aside>
-          <img src="/paw-logo.png" alt="logo" className="w-10 h-10 mb-2" />
+          <img src={logo} alt="logo" className="w-10 h-10 mb-2" />
           <p>
             <span className="text-xl font-bold text-sky-500">
-              Warm<span className="text-black">Paws</span>
+              Table<span className="text-black">Together</span>
             </span>
-            <br />
-            Caring for pets through every winter chill and thrill.
+            <br />a welcoming table where everyone belongs
           </p>
         </aside>
 
@@ -92,7 +92,7 @@ const Footer = () => {
       </div>
 
       <p className="text-center text-sm mt-10 text-gray-600">
-        © {new Date().getFullYear()}WarmPaws.All rights reserved.
+        © {new Date().getFullYear()}TableTogether.All rights reserved.
       </p>
     </footer>
   );

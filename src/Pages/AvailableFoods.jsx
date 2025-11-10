@@ -35,7 +35,9 @@ export default function AvailableFoods() {
   const handleViewDetails = (id) => {
     if (!user) {
       toast("Please login to view food details", { icon: "🔒" });
-      return navigate("/login");
+      return navigate("/login", {
+        state: { from: { pathname: `/food/${id}` } },
+      });
     }
     navigate(`/food/${id}`);
   };

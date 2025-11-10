@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -22,7 +22,7 @@ export default function FeaturedFoods({ food }) {
   const handleViewDetails = () => {
     if (!user) {
       toast("Please login to view food details", { icon: "🔐" });
-      navigate("/login");
+      navigate("/login", { state: { from: { pathname: `/food/${_id}` } } });
     } else {
       navigate(`/food/${_id}`);
     }
