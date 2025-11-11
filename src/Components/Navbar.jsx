@@ -123,7 +123,6 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Main menu (desktop) */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-3">{navLinks}</ul>
       </div>

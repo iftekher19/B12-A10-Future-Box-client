@@ -19,7 +19,7 @@ export default function FeaturedFoods({ food }) {
     donator,
   } = food;
 
-  // Handle “View Details” click
+  // Handle View Details click
   const handleViewDetails = () => {
     if (!user) {
       toast("Please login to view food details", { icon: "🔐" });
