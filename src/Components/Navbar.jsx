@@ -18,7 +18,7 @@ export default function Navbar() {
       .catch((err) => toast.error(err.message));
   };
 
-  // Common nav links (visible to everyone)
+  // Common nav links 
   const navLinks = (
     <>
       <li>
@@ -44,7 +44,7 @@ export default function Navbar() {
     </>
   );
 
-  // Private links (only visible when logged in)
+  // Private links only visible when logged in
   const privateLinks = (
     <>
       <li>
