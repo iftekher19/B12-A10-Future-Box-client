@@ -61,7 +61,7 @@ const Login = () => {
           <form onSubmit={handleLogin} className="card-body">
             <h2 className="text-2xl font-semibold text-center">Login</h2>
 
-            {/** email field (controlled) */}
+            {/** email field */}
             <div className="form-control">
               <label className="label">
                 <span>Email</span>

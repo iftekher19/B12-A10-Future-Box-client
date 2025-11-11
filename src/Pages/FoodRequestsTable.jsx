@@ -9,7 +9,7 @@ export default function FoodRequestsTable({ food }) {
   const [loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
-  // ✅ Fetch requests for this food (only for owner)
+  // Fetch requests for this food (only for owner)
   useEffect(() => {
     if (!food?._id) return;
     const fetchRequests = async () => {
@@ -26,7 +26,7 @@ export default function FoodRequestsTable({ food }) {
     fetchRequests();
   }, [food?._id, refresh]);
 
-  // ✅ Handle Accept / Reject actions
+  //  Handle Accept / Reject actions
   const handleStatusChange = async (id, status) => {
     try {
       const payload = { status, foodId: food._id };
@@ -42,7 +42,7 @@ export default function FoodRequestsTable({ food }) {
     }
   };
 
-  // ✅ Show only if logged user is donator
+    // Only food owner can see requests
   if (user?.email !== food?.donator?.email) return null;
 
   return (

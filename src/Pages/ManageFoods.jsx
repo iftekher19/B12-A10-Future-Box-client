@@ -158,82 +158,134 @@ export default function ManageFoods() {
         </div>
       )}
 
-      {/* ===== Update Modal ===== */}
+      {/*  Modal */}
       {selectedFood && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg w-96 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="relative bg-base-100 rounded-lg shadow-xl w-11/12 max-w-md p-6 animate-fadeIn">
+            {/* Close button */}
             <button
               onClick={() => setSelectedFood(null)}
-              className="absolute top-2 right-3 text-gray-500 hover:text-gray-700"
+              className="absolute right-3 top-3 text-gray-500 hover:text-red-500 text-xl font-bold"
+              title="Close"
             >
-              ✖
+              ✕
             </button>
 
-            <h3 className="text-xl font-semibold mb-4 text-center">
-              Update Food
+            {/* Modal title */}
+            <h3 className="text-2xl font-bold text-center text-primary mb-6">
+              Update Food Information
             </h3>
-            <form onSubmit={handleUpdateSubmit} className="space-y-3">
-              <input
-                type="text"
-                name="food_name"
-                value={selectedFood.food_name}
-                onChange={handleChange}
-                placeholder="Food Name"
-                className="input input-bordered w-full"
-                required
-              />
-              <input
-                type="text"
-                name="food_image"
-                value={selectedFood.food_image}
-                onChange={handleChange}
-                placeholder="Food Image URL"
-                className="input input-bordered w-full"
-                required
-              />
-              <input
-                type="text"
-                name="food_quantity"
-                value={selectedFood.food_quantity}
-                onChange={handleChange}
-                placeholder="Quantity"
-                className="input input-bordered w-full"
-                required
-              />
-              <input
-                type="text"
-                name="pickup_location"
-                value={selectedFood.pickup_location}
-                onChange={handleChange}
-                placeholder="Pickup Location"
-                className="input input-bordered w-full"
-                required
-              />
-              <input
-                type="date"
-                name="expire_date"
-                value={selectedFood.expire_date}
-                onChange={handleChange}
-                className="input input-bordered w-full"
-                required
-              />
-              <textarea
-                name="additional_notes"
-                value={selectedFood.additional_notes}
-                onChange={handleChange}
-                placeholder="Additional Notes"
-                className="textarea textarea-bordered w-full"
-              />
-              <div className="flex justify-between pt-4">
-                <button type="submit" className="btn btn-success text-white">
-                  Save
-                </button>
+
+            {/* Update form */}
+            <form onSubmit={handleUpdateSubmit} className="space-y-4">
+              <div>
+                <label className="label">
+                  <span className="label-text font-semibold">Food Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="food_name"
+                  value={selectedFood.food_name}
+                  onChange={handleChange}
+                  className="input input-bordered w-full"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="label">
+                  <span className="label-text font-semibold">
+                    Food Image URL
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  name="food_image"
+                  value={selectedFood.food_image}
+                  onChange={handleChange}
+                  className="input input-bordered w-full"
+                  placeholder="https://example.com/food.jpg"
+                  required
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="label">
+                    <span className="label-text font-semibold">Quantity</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="food_quantity"
+                    value={selectedFood.food_quantity}
+                    onChange={handleChange}
+                    className="input input-bordered w-full"
+                    placeholder="Serves 4 people"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="label">
+                    <span className="label-text font-semibold">
+                      Expire Date
+                    </span>
+                  </label>
+                  <input
+                    type="date"
+                    name="expire_date"
+                    value={selectedFood.expire_date}
+                    onChange={handleChange}
+                    className="input input-bordered w-full"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="label">
+                  <span className="label-text font-semibold">
+                    Pickup Location
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  name="pickup_location"
+                  value={selectedFood.pickup_location}
+                  onChange={handleChange}
+                  className="input input-bordered w-full"
+                  placeholder="e.g. Dhanmondi, Dhaka"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="label">
+                  <span className="label-text font-semibold">
+                    Additional Notes
+                  </span>
+                </label>
+                <textarea
+                  name="additional_notes"
+                  value={selectedFood.additional_notes}
+                  onChange={handleChange}
+                  className="textarea textarea-bordered w-full"
+                  rows={3}
+                  placeholder="Special handling, contains nuts, etc."
+                ></textarea>
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex justify-end gap-3 pt-4">
                 <button
                   type="button"
                   onClick={() => setSelectedFood(null)}
-                  className="btn btn-ghost"
+                  className="btn btn-outline"
                 >
                   Cancel
+                </button>
+                <button type="submit" className="btn btn-primary text-white">
+                  Save Changes
                 </button>
               </div>
             </form>
