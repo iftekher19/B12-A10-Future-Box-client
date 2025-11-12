@@ -11,7 +11,7 @@ export default function MyRequests() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) return; // safety guard
+    if (!user) return; 
 
     const fetchRequests = async () => {
       try {
@@ -76,7 +76,7 @@ export default function MyRequests() {
                     </div>
                   </td>
 
-                  <td>{req.location}</td>
+                  <td className="text-right md:text-left">{req.location}</td>
                   <td className="max-w-xs truncate">{req.reason}</td>
                   <td>{req.contactNo}</td>
                   <td>
