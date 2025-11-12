@@ -1,7 +1,7 @@
 # TableTogether – Community Food Sharing Platform
 
 ### Live Site URL
-[]
+["https://plateshare-6602a.web.app/"]
 
 ## Overview
 TableTogether is a full‑stack MERN web application designed to reduce food waste by connecting people who have surplus food with those who need it.  

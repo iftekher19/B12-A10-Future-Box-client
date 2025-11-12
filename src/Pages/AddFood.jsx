@@ -131,7 +131,7 @@ export default function AddFood() {
               value={form.pickup_location}
               onChange={handleChange}
               required
-              placeholder="e.g. Central Park, NY"
+              placeholder="e.g. Merul Badda"
               className="input input-bordered w-full"
             />
           </div>

@@ -8,7 +8,7 @@ import LoadingSpinner from "../Components/LoadingSpinner";
 export default function ManageFoods() {
   const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
-  const [selectedFood, setSelectedFood] = useState(null); // for update modal
+  const [selectedFood, setSelectedFood] = useState(null); 
   const [loading, setLoading] = useState(true);
 
   // Fetch user's added foods
@@ -71,7 +71,6 @@ export default function ManageFoods() {
       if (data.success) {
         toast.success("Food updated successfully!");
         setSelectedFood(null);
-        // refresh list
         const { data: updatedFoods } = await axios.get(
           `/foods?email=${user.email}`
         );

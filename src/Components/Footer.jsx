@@ -12,7 +12,7 @@ const Footer = () => {
         <aside>
           <img src={logo} alt="logo" className="w-10 h-10 mb-2" />
           <p>
-            <span className="text-xl font-bold text-sky-500">
+            <span className="text-xl font-bold text-[#00a1b7]">
               Table<span className="text-black">Together</span>
             </span>
             <br />a welcoming table where everyone belongs

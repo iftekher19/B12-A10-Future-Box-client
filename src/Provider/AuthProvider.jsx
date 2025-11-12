@@ -57,7 +57,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        // Refresh from Firebase directly
         setUser(auth.currentUser);
       } else {
         setUser(null);

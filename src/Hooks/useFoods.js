@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../axios.config"; // importing custom axios instance
+import axios from "../axios.config"; 
 
 const useFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -7,7 +7,7 @@ const useFoods = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // cleanup flag
+    let isMounted = true; 
 
     const fetchFoods = async () => {
       try {
@@ -27,7 +27,7 @@ const useFoods = () => {
 
     fetchFoods();
     return () => {
-      isMounted = false; // cleanup to prevent memory leak
+      isMounted = false; 
     };
   }, []);
 

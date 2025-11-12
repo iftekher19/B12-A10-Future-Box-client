@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// replace <your-vercel-server-url> when deployed
+//  axios instance with base URL
 const axiosInstance = axios.create({
   baseURL: "https://tabletogether.vercel.app",
 });
