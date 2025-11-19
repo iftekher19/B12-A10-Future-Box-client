@@ -21,3 +21,50 @@ Users can donate meals, browse available foods, and request food directly from c
 - **Backend:** Node JS, Express JS, MongoDB, Vercel Server  
 - **Authentication:** Firebase Auth  
 
+## 💻 How to Run the Project on Local Machine
+
+Follow these steps to set up and run **TableTogether** locally on your computer.
+
+> 🧪 Requirements: Node.js, npm (or yarn), and a working MongoDB (local or Atlas) connection.
+
+---
+
+### 1️⃣ Clone the Project
+```bash
+git clone https://github.com/yourusername/TableTogether.git
+cd TableTogether
+
+cd client
+npm install
+
+same cloner server and install
+npm install
+Create a .env file in the server folder:
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/TabletogetherDB
+JWT_SECRET=yourSecretKey
+
+**For Frontend**
+Inside the client folder, create another .env file and add your Firebase config (replace placeholder values):
+VITE_apiKey=yourFirebaseApiKey
+VITE_authDomain=yourFirebaseAuthDomain
+VITE_projectId=yourFirebaseProjectId
+VITE_storageBucket=yourFirebaseStorageBucket
+VITE_messagingSenderId=yourFirebaseSenderId
+VITE_appId=yourFirebaseAppId
+
+If using MongoDB Atlas, ensure your MONGO_URI is correct.
+
+then
+npm run dev
+Server running on http://localhost:5000
+Database connected ✓
+
+Run the Frontend (React):
+cd client
+npm run dev
+
+You’ll see something like:
+VITE v5.x.x  ready in 500ms
+➜  Local: http://localhost:5173/
+for any quaries mail me Thank you
